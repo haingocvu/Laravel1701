@@ -21,4 +21,19 @@ class PageController extends Controller
         echo '</br>';
         echo $request->product;
      }
+
+     function showview(){
+         $data = [
+            1,
+            2,
+            4,
+            8,
+            10
+         ];
+         $str = "hello world";
+         return view('home', compact('data', 'str'));
+     }
+     function adminHome(){
+         return view("admin.home");
+     }
 }

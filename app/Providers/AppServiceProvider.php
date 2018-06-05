@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
+use View;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -13,7 +15,19 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // $menu = [
+        //     'menu 1',
+        //     'menu 2'
+        // ];
+        //View::share(["menu"=>$menu]);//share all views.
+        //share specific views
+        View::composer(["admin.layout"], function($view){
+            $menu = [
+                'menu 1',
+                'menu 2'
+            ];
+            $view->with(["menu"=>$menu]);
+        });
     }
 
     /**
