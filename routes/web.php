@@ -48,3 +48,5 @@ Route::prefix('admin')->group(function(){
     Route::get('detail', 'AdminController@getDetailPage');
     Route::get('type', 'AdminController@getTypePage');
 });
+Route::get('contact', 'ContactController@getContact')->name('get-contact');
+Route::post('contact', 'ContactController@postContact')->name('post-contact');
