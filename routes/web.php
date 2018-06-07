@@ -50,3 +50,6 @@ Route::prefix('admin')->group(function(){
 });
 Route::get('contact', 'ContactController@getContact')->name('get-contact');
 Route::post('contact', 'ContactController@postContact')->name('post-contact');
+
+Route::get('upload', 'UploadController@getUpload')->name('upload');
+Route::post('upload', 'UploadController@postUpload')->name('upload');
