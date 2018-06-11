@@ -53,3 +53,53 @@ Route::post('contact', 'ContactController@postContact')->name('post-contact');
 
 Route::get('upload', 'UploadController@getUpload')->name('upload');
 Route::post('upload', 'UploadController@postUpload')->name('upload');
+
+Route::get('create-table-user', function(){
+    Schema::create('user', function($table){
+        $table->increments('id');
+        $table->string('name', 100)->default('Tuyen');
+        $table->string('email', 100)->unique();
+        $table->date('birthday');
+        $table->timestamps();
+    });
+    echo 'success';
+});
+
+Route::get('create-table-customer', function(){
+    Schema::create('customer', function($table){
+        $table->increments('id');
+        $table->string('name', 100)->default('Tuyen');
+        $table->string('email', 100)->unique();
+        $table->date('birthday');
+        $table->timestamps();
+    });
+    echo 'success';
+});
+
+Route::get('modified-table-customer', function(){
+    Schema::table('customer', function($t){
+        $t->string('password', 255);
+        $t->string('name', 255)->default('Tran Tuyen')->change();
+    });
+    echo 'success';
+});
+
+Route::get('rename-table-customer', function(){
+    Schema::rename('customer', 'khachhang');
+    echo 'success';
+});
+
+Route::get('drop-table-customer', function(){
+    Schema::dropIfExists('khachhang');
+    echo 'success';
+});
+
+Route::get('create-table-bill', function(){
+    Schema::create('bills', function($t){
+        $t->increments('id');
+        $t->integer('id_user')->unsigned();
+        $t->float('price', 8, 2);
+        $t->foreign('id_user')->references('id')->on('user');
+    });
+    echo 'success';
+});
