@@ -103,3 +103,5 @@ Route::get('create-table-bill', function(){
     });
     echo 'success';
 });
+
+Route::get('query-builder', 'QueryBuilderController@index');
